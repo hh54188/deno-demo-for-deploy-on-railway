@@ -11,13 +11,13 @@ app.use('*', cors({
     origin: '*',
 }))
 
-app.use('*', cors({
-    origin: (origin: string, c: Context) => {
-        return origin.endsWith('site2share.com') || origin.startsWith('chrome-extension') 
-                ? origin 
-                : 'https://www.site2share.com'
-    },
-}))
+// app.use('*', cors({
+//     origin: (origin: string, c: Context) => {
+//         return origin.endsWith('site2share.com') || origin.startsWith('chrome-extension') 
+//                 ? origin 
+//                 : 'https://www.site2share.com'
+//     },
+// }))
 
 app.get('/api/v1/user/*', (c: Context) => {
     return c.text('Unauthorized', 401)
