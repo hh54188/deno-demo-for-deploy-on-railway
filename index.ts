@@ -2,6 +2,9 @@ import { validator } from "https://deno.land/x/hono@v4.3.7/validator/index.ts";
 import { Hono, Context } from "https://deno.land/x/hono@v4.3.7/mod.ts";
 import { cors } from 'https://deno.land/x/hono/middleware.ts'
 
+import folderHandler, {validatorHandler as folderValidatorHandler} from './routers/folder.router-handler.ts';
+import publicHandler, {validatorHandler as publicValidatorHandler} from './routers/public.router-handler.ts';
+
 const app = new Hono()
 
 app.use('*', cors({
