@@ -15,6 +15,10 @@ app.get('/api/v1/user/*', (c: Context) => {
     return c.text('Unauthorized', 401)
 });
 
+app.get('/api/v1/folder/:id', validator('param', folderValidatorHandler), folderHandler);
+
+app.post('/public/api/v1/folder', validator('json', publicValidatorHandler), publicHandler);
+
 app.get('/api/v1/health', (c: Context) => {
     return c.json({status: 'ok'});
 })
