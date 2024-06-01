@@ -1,4 +1,6 @@
-import { Hono } from 'https://deno.land/x/hono/mod.ts'
+import { validator } from "https://deno.land/x/hono@v4.3.7/validator/index.ts";
+import { Hono, Context } from "https://deno.land/x/hono@v4.3.7/mod.ts";
+import { cors } from 'https://deno.land/x/hono/middleware.ts'
 
 const app = new Hono()
 
