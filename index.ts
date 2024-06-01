@@ -4,6 +4,25 @@ import { cors } from 'https://deno.land/x/hono/middleware.ts'
 
 const app = new Hono()
 
-app.get('/', (c) => c.text('Hello Deno!'))
+app.use('*', cors({
+    origin: '*',
+}))
+
+app.get('/api/v1/user/*', (c: Context) => {
+    return c.text('Unauthorized', 401)
+});
+
+app.get('/api/v1/health', (c: Context) => {
+    return c.json({status: 'ok'});
+})
+
+app.notFound((c) => {
+    return c.text('Custom 404 Message', 404)
+})
+
+app.onError((err, c) => {
+    console.error(`${err}`)
+    return c.text('Something wrong happened', 500)
+})
 
 Deno.serve({ port: Deno.env.get("PORT") }, app.fetch)
