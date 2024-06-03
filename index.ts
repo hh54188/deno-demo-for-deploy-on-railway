@@ -9,7 +9,7 @@ const app = new Hono()
 
 app.use('*', cors({
     origin: '*',
-    allowHeaders: '*',
+    allowHeaders: ['Content-Type'],
     allowMethods: ['POST', 'GET', 'OPTIONS', 'HEAD'],
 }))
 
